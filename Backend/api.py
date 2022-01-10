@@ -16,8 +16,8 @@ api = Api(app)
 
 #------------------------------------------------------------------------------------------------------------
 
-NODE_NAME = 'myelkfirst'
-es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+INDEX_NAME = 'games'
+es = Elasticsearch([{'host': 'localhost', 'port': 9200, 'http_auth':('elastic', 'password')}])
 
 #------------------------------------------------------------------------------------------------------------
 
@@ -71,7 +71,7 @@ class Controller(Resource):
         }
 
     def get(self):
-        res = es.search(index=NODE_NAME, size=0, body=self.baseQuery)
+        res = es.search(index=INDEX_NAME, size=0, body=self.baseQuery)
         return res
 
 
