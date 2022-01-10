@@ -46,7 +46,7 @@ class Controller(Resource):
                     "must": [
                         {
                             "match_phrase_prefix": {
-                                "title": {
+                                "name": {
                                     "query": "{}".format(self.query)
                                 }
                             }
@@ -60,7 +60,7 @@ class Controller(Resource):
             "aggs": {
                 "auto_complete": {
                     "terms": {
-                        "field": "title.keyword",
+                        "field": "name.keyword",
                         "order": {
                             "_count": "desc"
                         },
